@@ -1,21 +1,47 @@
-Given /^I am on the main google search$/ do
-  visit ('/')
+Given(/^I am on the home page$/) do
+  expect(page).have_content('Welcome to the Customer Insights')
 end
 
-When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
-  fill_in(field, :with => value)
+When(/^I go the Management Cockpit$/) do
+  click_link('Management Cockpit')
 end
 
-Then /^I click "([^"]*)" button$/ do |button|
-  click_button(button)
+Then(/^I get an option to add products$/) do
+      expect(page).have_content('Search for your products.')
+
 end
 
-Then /^I click on the first result$/ do
-  find(:xpath, "//html/body/div[3]/div[2]/div/div[5]/div[2]/div[2]/div/div[2]/div/ol/li/div/h3/a").click
+Given(/^I search for everything$/) do
+  fill_in('form-control', :with => 'Dairy')
+  click_button('Search')
 end
 
-Then /^I should see "([^"]*)"$/ do |text|
-  page.should have_content(text)
+When(/^I add a product$/) do
+  click_link('DAIRY (11)')
+  click('Apply')
+
 end
 
+And(/^I add a store$/) do
+  pending
+end
 
+And(/^I define time period$/) do
+  pending
+end
+
+And(/^I give a segmentation$/) do
+  pending
+end
+
+And(/^I define KPI settings$/) do
+  pending
+end
+
+And(/^I load the cockpit$/) do
+  pending
+end
+
+Then(/^I see the Sales to be (.*)/) do |arg1|
+  pending
+end

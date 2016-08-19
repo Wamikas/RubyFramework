@@ -7,6 +7,13 @@ Capybara.register_driver :selenium do |app|
 end
 
 Capybara.default_driver = :selenium
-Capybara.app_host = 'https://google.com'
+Capybara.app_host = 'https://demo.4tree.de'
 
 Capybara.default_max_wait_time = 10
+
+Before do
+  visit('/')
+  fill_in 'username',  with: 'developer'
+  fill_in 'password',  with: 'Eew8uo3g'
+  click_button('Login')
+end
